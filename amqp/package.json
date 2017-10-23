@@ -1,0 +1,52 @@
+{
+  "name": "rabbit-hello",
+  "version": "0.0.0",
+  "description": "",
+  "homepage": "",
+  "author": {
+    "name": "Ivo Stoyanov",
+    "email": "ivostoy@gmail.com",
+    "url": ""
+  },
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "keywords": [
+    ""
+  ],
+  "scripts": {
+    "prepublish": "nsp check",
+    "lint": "eslint . --fix",
+    "test": "jest",
+    "send": "node lib/send.js",
+    "recv": "node lib/recv.js"
+  },
+  "dependencies": {
+    "amqp-connection-manager": "^1.3.5",
+    "amqplib": "^0.5.1",
+    "benchmark": "^2.1.4",
+    "co": "^4.6.0",
+    "moment": "^2.18.1",
+    "readline": "^1.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.1.0",
+    "eslint-config-xo-space": "^0.16.0",
+    "jest": "^21.0.0",
+    "jest-cli": "^21.0.0",
+    "nsp": "^2.6.3"
+  },
+  "eslintConfig": {
+    "extends": "xo-space",
+    "env": {
+      "jest": true,
+      "node": true
+    }
+  },
+  "repository": "https://IvoS@git.smartdrivesystems.com/scm/sa/sandbox.git",
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "license": "Apache-2.0"
+}

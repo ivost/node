@@ -1,0 +1,17 @@
+{
+  "name": "kraken",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "r1": "node app1.js",
+    "r2": "node app2.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "kraken-api": "^1.0.0",
+    "kraken-exchange": "^1.3.0"
+  }
+}
