@@ -5,6 +5,8 @@
   "license": "MIT",
   "dependencies": {
     "odatajs": "^4.0.0",
-    "request": "^2.82.0"
+    "request": "^2.82.0",
+    "sd-svc-base-service": "^1.0.6",
+    "sd-svc-smart-recorders": "^0.1.6"
   }
 }

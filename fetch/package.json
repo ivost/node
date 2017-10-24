@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "@types/node-fetch": "^1.6.7",
-    "node-fetch": "^1.7.3"
+    "node-fetch": "^1.7.3",
+    "sd-svc-base-service": "^1.0.6"
   }
 }
