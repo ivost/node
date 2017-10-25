@@ -1,21 +1,15 @@
-import { MyMath } from './math';
 import { Greeter } from './greeter';
-
 
 import * as mocha from 'mocha';
 import * as chai from 'chai';
 
 const expect = chai.expect;
-describe('My math library', () => {
 
-  it('should be able to add things correctly' , () => {
-    expect(MyMath.add(3,4)).to.equal(7);
-  });
+describe('My greeter class spec', () => {
 
   it('should greet' , () => {
 	let greeter = new Greeter("world");
-	greeter.greet();
+	expect(greeter.greet()).to.equal("Hello, world");
   });
-
 
 });
