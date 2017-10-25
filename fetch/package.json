@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-  	 "test": "mocha --reporter spec --compilers ts:ts-node/register 'src/**/*.spec.ts'"
+    "test": "mocha --reporter spec --require ts-node/register 'src/**/*.spec.ts'"
   },
   "dependencies": {
     "@types/node-fetch": "^1.6.7",
