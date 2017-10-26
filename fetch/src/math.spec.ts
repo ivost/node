@@ -1,6 +1,6 @@
 import { MyMath } from './math';
-import { Greeter } from './greeter';
 
+import { Greeter } from './greeter';
 
 import * as mocha from 'mocha';
 import * as chai from 'chai';
@@ -12,10 +12,6 @@ describe('My math library', () => {
     expect(MyMath.add(3,4)).to.equal(7);
   });
 
-  it('should greet' , () => {
-	let greeter = new Greeter("world");
-	greeter.greet();
-  });
 
 
 });

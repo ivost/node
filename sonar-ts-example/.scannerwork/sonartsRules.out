@@ -1,0 +1,1 @@
+[{"endPosition":{"character":7,"line":5,"position":102},"failure":"Remove this useless assignment to local variable \"a\".","name":"/Users/ivos/Downloads/SonarTS-example-master/example1/src/index.ts","ruleName":"no-dead-store","ruleSeverity":"ERROR","startPosition":{"character":6,"line":5,"position":101}}]
