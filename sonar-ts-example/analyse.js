@@ -1,3 +1,5 @@
+// execute with node sonarq.ts
+
 const scanner = require("sonarqube-scanner");
 
 scanner(
