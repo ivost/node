@@ -8,8 +8,12 @@
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
+    "horseman": "^0.2.1",
     "jsonframe-cheerio": "^3.0.1",
+    "node-horseman": "^3.3.0",
     "osmosis": "^1.1.4",
+    "path": "^0.12.7",
+    "phantomjs-prebuilt": "^2.1.15",
     "request": "^2.83.0"
   }
 }
