@@ -21,11 +21,14 @@ const h = horseman
     .waitForSelector('form')
     .type('input[name="email"]', EMAIL)
     .type('input[name="password"]', PASS)
-    .click("input[value='Login']")
+    .click(`input[value='Login']`)
     //.screenshot('p1.png')
-    .wait(3000)
+    .wait(2000)
     .open(DME)
     .wait(2000)
-    .html().log()
+    //.html(`a[class='wikilink1']'`).log()
+    //.waitForSelector('a.wikilink1')
+    .html()
+    .log()
     .close();
 
