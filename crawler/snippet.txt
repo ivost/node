@@ -25,7 +25,32 @@ const h = horseman
     //.screenshot('p1.png')
     .wait(3000)
     .open(DME)
+    .screenshot('p2.png')
+    // .url(DME)
+    // .then(function (url) {
+    //     console.log(`URL ${url}`);
+    // })
     .wait(2000)
-    .html().log()
+    .screenshot('p3.png')
     .close();
+
+    // .do(function(done){
+    //     console.log(h);
+    //   setTimeout(done,1000);
+    // })
+
+    //.waitForSelector('body').html().log()
+
+//h.cookies().log();
+// h.waitForSelector('form').log();
+
+// h.type('input[name="email"]', EMAIL);
+// h.type('input[name="password"]', PASS);
+    //h.cookies().log();
+    //console.log(JSON.stringify(h.cookies()));
+
+   // h.close();
+
+//h.close();
+
 
