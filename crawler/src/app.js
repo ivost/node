@@ -23,17 +23,16 @@ const PASS = 'Svetlana1`';
 
 function page(h, name) {
   console.log('page ' + name);
-  console.log('url ' + SERV + name);
+  // console.log('url ' + SERV + name);
   return h.open(SERV + name)
   .wait(1000)
-  .pdf(`out/test.pdf`, {
+  .pdf(`out/${name}.pdf`, {
     format: 'Letter',
     orientation: 'landscape',
     margin: '0.2in',
     header: {
       height: '0.1in',
       contents: function(pageNum, numPages) {
-        console.log('contents');
         return `<h3> ${name}         ${pageNum}/${numPages}</h3>`;
       }
     }
@@ -50,19 +49,17 @@ var h = horseman.userAgent(UA)
     .type('input[name="email"]', EMAIL)
     .type('input[name="password"]', PASS)
     .click(`input[value='Login']`)
-    .wait(1000);
-    //.screenshot('out/p1.png')
-    // h.open(DME2)
-    // .wait(1000)
-    // .pdf(`out/test.pdf`)
-    // ;
-
-    h = page(h, 'market:2017-11-02');
-
-    //.html(`a[class='wikilink1']'`).log()
+    .waitForNextPage()
+    .open(DME)
+    .wait(1000)
+    // .html()
+    // .log()
     //.waitForSelector('a.wikilink1')
-    //.html()
-    //.log()
+    .html('a.toc').log()
+    ;
+
+    // h = page(h, 'market:2017-11-02');
+
 
     h.close();
 

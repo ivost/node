@@ -5,6 +5,32 @@
     ]
 
 
+    .pdf('test.pdf', {
+        format: 'Letter',
+        orientation: 'portrait',
+        margin: '0.5in',
+        header: {
+          height: '3cm',
+          contents: function(pageNum, numPages) {
+            if (pageNum == 1) {
+              return '';
+            }
+            return '<h3>Header ' + pageNum + ' / ' + numPages + '</h3>';
+          }
+        },
+        footer: {
+          height: '3cm',
+          contents: function(pageNum, numPages) {
+            if (pageNum == 1) {
+              return '';
+            }
+            return '<h3>Footer ' + pageNum + ' / ' + numPages + '</h3>';
+          }
+        }
+      })
+
+
+
 var Horseman = require('node-horseman');
 
 // https://www.npmjs.com/package/node-horseman
