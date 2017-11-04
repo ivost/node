@@ -4,7 +4,7 @@
   "main": "app.js",
   "license": "MIT",
   "scripts": {
-    "a": "node app.js"
+    "a": "node src/app.js"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
