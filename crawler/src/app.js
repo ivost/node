@@ -1,4 +1,8 @@
-var Horseman = require('node-horseman');
+const cheerio = require('cheerio');
+const _ = require('lodash')
+const jsonframe = require('jsonframe-cheerio');
+const Horseman = require('node-horseman')
+const co = require('co');
 /*
 https://www.npmjs.com/package/node-horseman
 https://github.com/johntitus/node-horseman
@@ -42,24 +46,42 @@ function page(h, name) {
 
 console.log(`browse to ${LOGIN}`);
 
-const horseman = new Horseman();
-var h = horseman.userAgent(UA)
-    .open(LOGIN)
-    .waitForSelector('form')
-    .type('input[name="email"]', EMAIL)
-    .type('input[name="password"]', PASS)
-    .click(`input[value='Login']`)
-    .waitForNextPage()
-    .open(DME)
-    .wait(1000)
-    // .html()
-    // .log()
-    //.waitForSelector('a.wikilink1')
-    .html('a.toc').log()
-    ;
+const horseman = new Horseman().userAgent(UA);
 
+// var h = horseman.userAgent(UA)
+//     .open(LOGIN)
+//     .waitForSelector('form')
+//     .type('input[name="email"]', EMAIL)
+//     .type('input[name="password"]', PASS)
+//     .click(`input[value='Login']`)
+//     .waitForNextPage()
+//     .open(DME)
+//     .wait(1000)
+//     // .html()
+//     // .log()
+//     //.waitForSelector('a.wikilink1')
+//     .html('a.toc').log()
+//     ;
+
+    co(function* () {
+      yield horseman
+            .open(LOGIN)
+            .waitForSelector('form')
+            .type('input[name="email"]', EMAIL)
+            .type('input[name="password"]', PASS)
+            .click(`input[value='Login']`)
+            .waitForNextPage()
+            ;
+
+      yield horseman.open(DME)
+
+      var html = yield horseman.html();
+      console.log(html)
+      // parse(html);
+      yield horseman.close();
+    }).catch(function (e) {
+      console.log(e)
+    });
+    
     // h = page(h, 'market:2017-11-02');
-
-
-    h.close();
 

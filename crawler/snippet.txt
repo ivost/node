@@ -4,6 +4,51 @@
         "**/node_modules/*"
     ]
 
+/*
+
+let frame = {
+	"pricing": {
+		_s: "#pricing .item",
+		_d: [{
+			"name": ".planName",
+			"price": {
+				_s: ".planPrice",
+				_a: "price"
+			},
+			"image": {
+				"url": {
+					_s: "img",
+					_a: "src"
+				},
+				"link": {
+					_s: "a",
+					_a: "href"
+				}
+			}
+		}]
+	}
+}
+
+*/
+//days: [{x: "li"}]
+
+// days: {
+// 	_s: "div.level2 ul",
+// 	_d: [{
+// 		y: "html"
+// 	}]
+// }
+// }]
+
+// _d: [{
+// 	"name": ".planName",
+// 	"price": ".planPrice @ price",
+// 	"link": "a @ href",
+// 	"image": {
+// 		"url": "img",
+// 		"link": "a @ href"
+// 	}
+// }]
 
   // const ch = $('#container h2').children();
   // console.log(ch);

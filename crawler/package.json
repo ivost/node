@@ -4,9 +4,10 @@
   "main": "app.js",
   "license": "MIT",
   "scripts": {
-    "a": "node src/app.js",
-    "t": "node src/try-yield.js",
-    "j": "nodemon src/try-jsonframe.js"
+    "a": "nodemon src/app.js",
+    "j": "nodemon src/try-jsonframe.js",
+    "t": "nodemon src/t.js",
+    "tt": "nodemon src/tt.js"
   },
 
   "devDependencies": {
