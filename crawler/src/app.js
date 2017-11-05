@@ -41,12 +41,12 @@ function parseList(html) {
 }
 
 function scrape(h, el, standardPage) {
-  console.log(el);
+  // console.log(el);
   const name = `${prefix}-${el.text}`;
   const dir = ensureDir(name);
   const url = HOST + el.q;
   const path = `${dir}/${name}.pdf`;
-  console.log('url ' + url + ', path ' + path);
+  console.log('scraping url ' + url + ', path ' + path);
   if (standardPage) {
     return h.open(url)
       .wait(1000)
@@ -64,14 +64,14 @@ function scrape(h, el, standardPage) {
 }
 
 function ensureDir(date) {
-	console.log('ensureDir', date);	
+	// console.log('ensureDir', date);	
 	const t = date.split('-');
 	const yr = t[1];
 	const mon = t[2];
 	// const day = t[3];
 	//console.log('ensureDir', yr, mon);	
 	const path = `./out/${yr}/${mon}`;
-	console.log('ensureDir', path);
+	// console.log('ensureDir', path);
 	mkdirp(path, function(err) { 
 		if (err) {
       console.log(err);
@@ -102,9 +102,10 @@ co(function* () {
   //fixme
   prefix = 'ltpd';
   */
-  prefix = 'ltpd';
-  const letter = true;
-
+  prefix = 'ptw';
+  //const letter = true;
+  const letter = false;
+  
   const URL = `${HOST}/services:${prefix}:start`;
 
   yield horseman.open(URL)
@@ -113,8 +114,12 @@ co(function* () {
   console.log("got " + list.length + ' ' + prefix + ' articles');
   // yield scrape(horseman, list[0], false);
   for (var el of list) {
-    yield horseman.wait(2000);
-    scrape(horseman, el, letter);
+    yield horseman.wait(5000);
+    try {
+      scrape(horseman, el, letter);
+    } catch (ex) {
+      console.log(ex);
+    }
   }
   yield horseman.close();
 }).catch(function (e) {
