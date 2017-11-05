@@ -26,7 +26,7 @@ const SEL1 = '.category-uncategorized, #post-wrapper a, .hl'
 ////////////////////
 var horseman = new Horseman();
 co(function* () {
-  yield horseman.open(URL1);
+  yield horseman.open(URL);
   var html = yield horseman.html();
   parse(html);
   yield horseman.close();
@@ -40,11 +40,22 @@ function parse(html) {
   const $ = cheerio.load(html);
   jsonframe($);
 
+  // let frame = {
+  //   head: "h3.hl",
+  //   link: "a@href",
+  //   posts: ["ul a@href"],
+  //   footer: "div.fl a@href"
+  // }
+
   let frame = {
-    head: "h3.hl",
-    link: "a@href",
-    posts: ["ul a@href"],
-    footer: "div.fl a@href"
+    top: "a@href",
+    posts: {
+      _s: "ul.blog-items",
+      _d: {
+        t: ["a"],
+        x: ["a@href"]
+      }
+    }
   }
 
   const x = $('body').scrape(frame, { string: true });
