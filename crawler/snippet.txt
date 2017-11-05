@@ -4,6 +4,21 @@
         "**/node_modules/*"
     ]
 
+// var h = horseman.userAgent(UA)
+//     .open(LOGIN)
+//     .waitForSelector('form')
+//     .type('input[name="email"]', EMAIL)
+//     .type('input[name="password"]', PASS)
+//     .click(`input[value='Login']`)
+//     .waitForNextPage()
+//     .open(DME)
+//     .wait(1000)
+//     // .html()
+//     // .log()
+//     //.waitForSelector('a.wikilink1')
+//     .html('a.toc').log()
+//     ;
+
 /*
 
 let frame = {

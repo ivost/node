@@ -1,6 +1,8 @@
 let cheerio = require('cheerio');
 let _ = require('lodash')
 const jsonframe = require('jsonframe-cheerio');
+const mkdirp = require('mkdirp');
+
 //let jsonframe = require('./index.js')
 // https://www.gitbook.com/book/kevinchisholm/basic-web-scraping-with-node-js-and-cheerio-js/details
 let html = `
@@ -70,15 +72,22 @@ res2.each(function(i, el) {
 		const text = $(this).text();
 		const href = el.attribs.href; 
 		console.log(`text ${text}, href ${href}`);
-		const t = text.split('-');
-		const yr = t[0];
-		const mon = t[1];
-		const day = t[2];
-		console.log(yr, mon, day);		
-		// let p = $(this).parent();
-		// console.log(p);
+		ensureDir(text);
 	});
 })
+
+function ensureDir(date) {
+	const t = date.split('-');
+	const yr = t[0];
+	const mon = t[1];
+	const day = t[2];
+	console.log('ensureDir', yr, mon, day);	
+	const path = `./out/${yr}/${mon}`;
+	console.log(path);
+	mkdirp(path, function(err) { 
+		// console.log(err);
+	});
+}
 
 	//console.log(x);
 	//console.log(el);

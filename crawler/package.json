@@ -9,7 +9,6 @@
     "t": "nodemon src/t.js",
     "tt": "nodemon src/tt.js"
   },
-
   "devDependencies": {
     "cheerio": "^0.22.0",
     "expect": "^1.20.2",
@@ -25,10 +24,10 @@
     "horseman": "^0.2.1",
     "jsonframe-cheerio": "^2.0.5",
     "lodash": "^4.17.4",
+    "mkdirp": "^0.5.1",
     "mocha": "^3.2.0",
     "node-horseman": "^3.3.0",
     "path": "^0.12.7",
     "phantomjs-prebuilt": "^2.1.15"
   }
 }
-
