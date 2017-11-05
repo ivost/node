@@ -35,28 +35,28 @@ let html = `
 let $ = cheerio.load(html)
 
 jsonframe($)
-			let frame0 = {
-				"proPrice": {
-					_s: ".planName:contains('Pro') + span",
-					_a: "price"
-				}
+let frame0 = {
+	"proPrice": {
+		_s: ".planName:contains('Pro') + span",
+		_a: "price"
+	}
+}
+let frame = {
+	"pricing": {
+		_s: "#pricing .item",
+		_d: [{
+			"name": ".planName",
+			"price": ".planPrice @ price",
+			"link": "a @ href",
+			"image": {
+				"url": "img",
+				"link": "a @ href"
 			}
-			let frame = {
-				"pricing": {
-					_s: "#pricing .item",
-					_d: [{
-						"name": ".planName",
-						"price": ".planPrice @ price",
-						"link": "a @ href",
-						"image": {
-							"url": "img",
-							"link": "a @ href"
-						}
-					}]
-				}
-			}
+		}]
+	}
+}
 
-			let output = $('body').scrape(frame)
-      		console.log(output)
+let output = $('body').scrape(frame)
+console.log(output)
 
 
