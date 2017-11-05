@@ -1,6 +1,7 @@
-const cheerio = require('cheerio');
+let cheerio = require('cheerio');
 let _ = require('lodash')
 const jsonframe = require('jsonframe-cheerio');
+//let jsonframe = require('./index.js')
 
 let html = `
 <html>
@@ -15,12 +16,12 @@ let html = `
         <li class="item">
             <span class="planName">Hacker</span>
             <span class="planPrice" price="0">Free</span>
-            <a href="/hacker"> <img src="./img/hacker.png"> </a>
+            <a href="http://apple.com"> <img src="./img/hacker.png"> </a>
         </div>
         <li class="item">
             <span class="planName">Pro</span>
             <span class="planPrice" price="39.00">$39</span>
-            <a href="/pro"> <img src="./img/pro.png"> </a>
+            <a href="http://google.com"> <img src="./img/pro.png"> </a>
         </div>
     </ul>
 	<div id="contact">
@@ -34,27 +35,23 @@ let html = `
 let $ = cheerio.load(html)
 
 jsonframe($)
-
-// let frame = {
-// 	"proPrice": {
-// 		_s: ".planName:contains('Pro') + span",
-// 		_a: "price"
-// 	}
-// }
-
+let frame0 = {
+	"proPrice": {
+		_s: ".planName:contains('Pro') + span",
+		_a: "price"
+	}
+}
 let frame = {
 	"pricing": {
 		_s: "#pricing .item",
 		_d: [{
 			"name": ".planName",
 			"price": ".planPrice @ price",
-			"image": {
-				"url": "img",
-				"link": "a @ href"
-			}
+			"link": "a @ href"
 		}]
 	}
 }
 
 let output = $('body').scrape(frame)
 console.log(output)
+
