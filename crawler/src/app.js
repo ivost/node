@@ -3,6 +3,8 @@ const cheerio = require('cheerio');
 //const jsonframe = require('jsonframe-cheerio');
 const Horseman = require('node-horseman')
 const co = require('co');
+const mkdirp = require('mkdirp');
+
 /*
 https://www.npmjs.com/package/node-horseman
 https://github.com/johntitus/node-horseman
@@ -13,15 +15,11 @@ https://wiki.technitraderonlinecampus.com/services:market:2017-11-02
 //const UA = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0';
 
 const UA = 'Mozilla/5.0 Firefox/27.0';
-
 const HOST = 'https://wiki.technitraderonlinecampus.com';
 const LOGIN = `https://account.technitraderonlinecampus.com/sign-in`;
 const DME = `${HOST}/services:dme:start`;
-
-const DME2 = `https://wiki.technitraderonlinecampus.com/services:market:2017-11-02`;
-
-const SERV = `https://wiki.technitraderonlinecampus.com/services:`;
-
+// const DME2 = `https://wiki.technitraderonlinecampus.com/services:market:2017-11-02`;
+// const SERV = `https://wiki.technitraderonlinecampus.com/services:`;
 const EMAIL = 'ivostoy@gmail.com';
 const PASS = 'Svetlana1`';
 
@@ -45,12 +43,14 @@ function parseList(html) {
 
 function scrape(h, el) {
   console.log(el);
-  // console.log('url ' + SERV + name);
   const name = el.text;
   const dir = ensureDir(name);
-  return h.open(SERV + el.q)
+  const url = HOST + el.q;
+  const path = `$dir/${name}.pdf`;
+  console.log('url ' + url + ', path ' + path);
+  return h.open()
     .wait(1000)
-    .pdf(`$dir/${name}.pdf`, {
+    .pdf(path, {
       format: 'Letter',
       orientation: 'landscape',
       margin: '0.2in',
@@ -98,8 +98,9 @@ co(function* () {
   const html = yield horseman.html();
   const list = parseList(html);
   console.log("got " + list.length + ' articles');
-  scrape(h, el[0]);
-  scrape(h, el[100]);
+  yield scrape(horseman, list[0]);
+  yield scrape(horseman, list[100]);
+  yield scrape(horseman, list[400]);
   // for (var el in list) {
   //   scrape(h, el);
   // }
