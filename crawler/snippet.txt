@@ -5,6 +5,21 @@
     ]
 
 
+  // const ch = $('#container h2').children();
+  // console.log(ch);
+  // ch.each((i, el) => {
+  //   console.log(i);
+  //   console.log(el);
+    
+    // var a = $(this).prev();
+    // console.log(a.text());
+    // console.log(i, el.childNodes.length);
+    // for (x of el.childNodes) {
+    //   console.log(x);
+    // }
+//  });
+
+
     .pdf('test.pdf', {
         format: 'Letter',
         orientation: 'portrait',
