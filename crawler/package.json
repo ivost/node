@@ -6,7 +6,18 @@
   "scripts": {
     "a": "node src/app.js",
     "t": "node src/try-yield.js",
-    "j": "node src/try-jsonframe.js"
+    "j": "nodemon src/try-jsonframe.js"
+  },
+
+  "devDependencies": {
+    "cheerio": "^0.22.0",
+    "expect": "^1.20.2",
+    "lodash": "^4.17.4",
+    "mocha": "^3.2.0",
+    "nodemon": "^1.11.0",
+    "unfluff": "^1.1.0",
+    "xmldom": "^0.1.27",
+    "xpath": "0.0.23"
   },
   "dependencies": {
     "cheerio": "^0.22.0",
