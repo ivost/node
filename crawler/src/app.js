@@ -40,39 +40,27 @@ function parseList(html) {
   return res;
 }
 
-function scrape(h, el) {
+function scrape(h, el, standardPage) {
   console.log(el);
   const name = `${prefix}-${el.text}`;
   const dir = ensureDir(name);
   const url = HOST + el.q;
   const path = `${dir}/${name}.pdf`;
   console.log('url ' + url + ', path ' + path);
-  return h.open(url)
+  if (standardPage) {
+    return h.open(url)
+      .wait(1000)
+      .pdf(path);    
+  } else {
+    return h.open(url)
     .wait(1000)
     //.pdf(path);
     .pdf(path, {
-      format: 'Letter',
-      orientation: 'portrait',
-      margin: '0.5in',
-      header: {
-        height: '3cm',
-        contents: function(pageNum, numPages) {
-          if (pageNum == 1) {
-            return '';
-          }
-          return '<h3>Header ' + pageNum + ' / ' + numPages + '</h3>';
-        }
-      },
-      footer: {
-        height: '3cm',
-        contents: function(pageNum, numPages) {
-          if (pageNum == 1) {
-            return '';
-          }
-          return '<h3>Footer ' + pageNum + ' / ' + numPages + '</h3>';
-        }
-      }
-        });
+      width:  '1024px',
+      height: '920px',
+      margin: '10px'
+    });
+  }
 }
 
 function ensureDir(date) {
@@ -115,21 +103,19 @@ co(function* () {
   prefix = 'ltpd';
   */
   prefix = 'ltpd';
-  prefix = 'dme';
-  
+  const letter = true;
+
   const URL = `${HOST}/services:${prefix}:start`;
 
   yield horseman.open(URL)
   const html = yield horseman.html();
   const list = parseList(html);
   console.log("got " + list.length + ' ' + prefix + ' articles');
-  yield scrape(horseman, list[0]);
-  // yield scrape(horseman, list[100]);
-  // yield scrape(horseman, list[400]);
-  // for (var el in list) {
-  //   yield horseman.wait(2000);
-  //   scrape(horseman, el);
-  // }
+  // yield scrape(horseman, list[0], false);
+  for (var el of list) {
+    yield horseman.wait(2000);
+    scrape(horseman, el, letter);
+  }
   yield horseman.close();
 }).catch(function (e) {
   console.log(e)

@@ -18,6 +18,24 @@
 //     //.waitForSelector('a.wikilink1')
 //     .html('a.toc').log()
 //     ;
+  // footer: {
+  //   contents: function(pageNum, numPages) {
+  //     return pageNum + '/' + numPages;
+  //   }
+  // }
+  // format: 'Letter',
+      // orientation: 'landscape',
+      // margin: '0.3in',
+      // footer: {
+      //   height: '1cm',
+      //   contents: function(pageNum, numPages) {
+      //     // if (pageNum == 1) {
+      //     //   return '';
+      //     // }
+      //     return '<h4>' + pageNum + ' / ' + numPages + '</h4>';
+      //   }
+      // }
+    });
 
 /*
 
