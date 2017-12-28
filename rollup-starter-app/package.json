@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "date-fns": "^1.28.5",
+    "left-pad": "^1.2.0",
     "serve": "^6.4.2",
     "the-answer": "^1.0.0"
   },
