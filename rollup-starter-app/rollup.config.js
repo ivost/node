@@ -17,6 +17,6 @@ export default {
 	plugins: [
 		resolve(), // tells Rollup how to find date-fns in node_modules
 		commonjs(), // converts date-fns to ES modules
-		production && uglify() // minify, but only in production
+		// production && uglify() // minify, but only in production
 	]
 };

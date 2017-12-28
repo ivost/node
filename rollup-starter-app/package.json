@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "date-fns": "^1.28.5",
-    "serve": "^6.4.2"
+    "serve": "^6.4.2",
+    "the-answer": "^1.0.0"
   },
   "scripts": {
     "build": "rollup -c",
