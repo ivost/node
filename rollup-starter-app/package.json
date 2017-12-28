@@ -8,8 +8,10 @@
     "rollup-plugin-uglify": "^2.0.1"
   },
   "dependencies": {
+    "@types/node": "^8.0.58",
     "date-fns": "^1.28.5",
     "left-pad": "^1.2.0",
+    "rollup-plugin-json": "^2.3.0",
     "serve": "^6.4.2",
     "the-answer": "^1.0.0"
   },

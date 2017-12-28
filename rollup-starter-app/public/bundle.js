@@ -1,5 +1,9 @@
 'use strict';
 
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var fs = _interopDefault(require('fs'));
+
 /**
  * @category Common Helpers
  * @summary Is the given argument an instance of Date?
@@ -1262,11 +1266,16 @@ function leftPad (str, len, ch) {
 
 /*
 https://rollupjs.org/#npm-packages
+https://www.npmjs.com/package/rollup-plugin-node-resolve
 */
 
+//import { readFileSync } from 'fs';
 function main () {
   console.log('the answer is ' + index);
 }
+
+var p = fs.readFileSync("package.json", "utf8");
+console.log(p);
 
 console.log("[" + leftPad_1('foo', 5) + "]");
 console.log('the answer is ' + index);
