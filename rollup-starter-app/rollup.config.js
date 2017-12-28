@@ -12,8 +12,7 @@ export default {
     	file: './public/bundle.js',
     	// -f, --output.format [es]    Type of output (amd, cjs, es, iife, umd)
     	format: 'cjs',
-    	name: 'test',
-	    sourcemap: true
+	    sourcemap: false
 	},
 	plugins: [
 		resolve(), // tells Rollup how to find date-fns in node_modules
